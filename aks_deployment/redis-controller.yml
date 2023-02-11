@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis
+  labels:
+    name: redis
+spec:
+  replicas: 1  #The number of copies is 1
+  selector:
+    name: redis
+  template:   #Template
+    metadata:
+      name: redis
+      labels:
+        name: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:latest
+        imagePullPolicy: IfNotPresent  #Image pull strategy
+        ports:
+        - containerPort: 6379   #Container por
